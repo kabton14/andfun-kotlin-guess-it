@@ -62,11 +62,11 @@ private lateinit var viewModelFactory: ScoreViewModelFactory
             viewModel.playAgain()
         }
 
-        viewModel.score.observe(this, Observer { finalScore ->
+        viewModel.score.observe(viewLifecycleOwner, Observer { finalScore ->
             binding.scoreText.text = finalScore.toString()
         })
 
-        viewModel.eventPlayAgain.observe(this, Observer { playAgain ->
+        viewModel.eventPlayAgain.observe(viewLifecycleOwner, Observer { playAgain ->
             if (playAgain) {
                 onPlayAgain()
             }
