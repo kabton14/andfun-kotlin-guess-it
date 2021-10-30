@@ -65,22 +65,22 @@ class GameFragment : Fragment() {
 
         /** Setting up LiveData observation relationships **/
 
-        viewModel.score.observe(this, Observer { newScore ->
+        viewModel.score.observe(viewLifecycleOwner, Observer { newScore ->
             binding.scoreText.text = newScore.toString()
         })
 
-        viewModel.word.observe(this, Observer { newWord ->
+        viewModel.word.observe(viewLifecycleOwner, Observer { newWord ->
             binding.wordText.text = newWord
         })
 
-        viewModel.eventGameFinish.observe(this, Observer { hasFinished ->
+        viewModel.eventGameFinish.observe(viewLifecycleOwner, Observer { hasFinished ->
             if (hasFinished) {
                 gameFinished()
                 viewModel.onGameFinishComplete()
             }
         })
 
-        viewModel.currentTime.observe(this, Observer { newTime ->
+        viewModel.currentTime.observe(viewLifecycleOwner, Observer { newTime ->
             Log.i("Countdown Timer", "Tick")
             binding.wordIsText.text = DateUtils.formatElapsedTime(newTime)
         })
