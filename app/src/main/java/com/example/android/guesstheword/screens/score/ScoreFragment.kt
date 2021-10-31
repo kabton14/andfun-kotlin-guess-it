@@ -56,12 +56,10 @@ private lateinit var viewModelFactory: ScoreViewModelFactory
         viewModelFactory = ScoreViewModelFactory(ScoreFragmentArgs.fromBundle(arguments!!).score)
         viewModel = ViewModelProvider(this, viewModelFactory).get(ScoreViewModel::class.java)
 
+        binding.scoreViewModel = viewModel
+
         // Get args using by navArgs property delegate
         val scoreFragmentArgs by navArgs<ScoreFragmentArgs>()
-
-        binding.playAgainButton.setOnClickListener {
-            viewModel.playAgain()
-        }
 
         viewModel.score.observe(viewLifecycleOwner, Observer { finalScore ->
             binding.scoreText.text = finalScore.toString()
