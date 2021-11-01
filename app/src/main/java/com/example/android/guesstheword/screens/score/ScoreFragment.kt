@@ -57,13 +57,14 @@ private lateinit var viewModelFactory: ScoreViewModelFactory
         viewModel = ViewModelProvider(this, viewModelFactory).get(ScoreViewModel::class.java)
 
         binding.scoreViewModel = viewModel
+        binding.lifecycleOwner = this
 
         // Get args using by navArgs property delegate
         val scoreFragmentArgs by navArgs<ScoreFragmentArgs>()
 
-        viewModel.score.observe(viewLifecycleOwner, Observer { finalScore ->
-            binding.scoreText.text = finalScore.toString()
-        })
+//        viewModel.score.observe(viewLifecycleOwner, Observer { finalScore ->
+//            binding.scoreText.text = finalScore.toString()
+//        })
 
         viewModel.eventPlayAgain.observe(viewLifecycleOwner, Observer { playAgain ->
             if (playAgain) {
