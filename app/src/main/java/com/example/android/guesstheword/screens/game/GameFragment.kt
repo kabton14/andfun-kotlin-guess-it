@@ -77,10 +77,10 @@ class GameFragment : Fragment() {
             }
         })
 
-        viewModel.currentTime.observe(viewLifecycleOwner, Observer { newTime ->
-            Log.i("Countdown Timer", "Tick")
-            binding.timerText.text = DateUtils.formatElapsedTime(newTime)
-        })
+//        viewModel.currentTime.observe(viewLifecycleOwner, Observer { newTime ->
+//            Log.i("Countdown Timer", "Tick")
+//            binding.timerText.text = DateUtils.formatElapsedTime(newTime)
+//        })
 
 
 
